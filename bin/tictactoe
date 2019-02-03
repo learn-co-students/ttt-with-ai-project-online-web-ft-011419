@@ -1,3 +1,52 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+input = ""
+
+def start
+  puts
+  puts "Welcome to Tic-Tac-Toe CLI!"
+  puts
+  puts "Please choose player mode:
+  0- Computer vs Computer
+  1- Player 1 vs Computer
+  2- Player 1 vs Player 2"
+
+  mode = gets.strip.to_i
+
+  if mode == 0
+    Game.new(Players::Computer.new("X"), Players::Computer.new("O"), Board.new).play
+
+  elsif mode == 1
+    puts
+    puts "Choose who goes first:
+    1- Player 1
+    2- Computer"
+    user_input = gets.strip.to_i
+
+    if user_input == 1
+      Game.new(Players::Human.new("X"), Players::Computer.new("O"), Board.new).play
+    elsif user_input == 2
+      Game.new(Players::Computer.new("X"), Players::Human.new("O"), Board.new).play
+    else
+      puts "Invalid Input"
+      start
+    end
+
+  elsif mode == 2
+    Game.new(Players::Human.new("X"), Players::Human.new("O"), Board.new).play
+
+  else
+    puts "Invalid Input"
+    start
+  end
+
+end
+
+until input == "n"
+  start
+  puts
+  puts "Would you like to play again? [y/n]"
+  input = gets.strip
+end
