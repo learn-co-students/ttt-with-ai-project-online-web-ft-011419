@@ -38,11 +38,13 @@ class Board
   def valid_move?(input)
     if (1..9).include?(input.to_i)
       taken?(input) ? false : true
+    elsif input == "reset"
+      start 
     else
       false
       puts
       puts "Invalid Move"
-      puts 
+      puts
     end
   end
 

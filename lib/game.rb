@@ -59,7 +59,7 @@ class Game
   def play
     while !over? do
       self.turn
-      sleep (0.5)
+      #sleep (0.5)
       @board.display
     end
     puts "Congratulations #{winner}!" if won?
