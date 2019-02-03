@@ -32,21 +32,24 @@ class Players
       end
     end
 
-    def win
-      winning_row = WIN_COMBINATIONS.find do |combo|
-        if @board.cells[combo[0]] != " "
-        end
-      end
+    def corner
+      CORNERS.find {|corner| @board.cells[corner] == " "}
     end
 
 
     def move(board)
       @board = board
-      if block != nil
-        block + 1
-      else
-        rand(1..9).to_s
+
+      case
+        when block != nil
+          output = block + 1
+        when corner != nil
+          output = corner + 1
+        else
+          output = rand(1..9)
       end
+
+        output.to_s
     end
 
   end
