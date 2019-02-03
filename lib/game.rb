@@ -57,17 +57,9 @@ class Game
   end
 
   def play
-    puts
-    puts "1 | 2 | 3"
-    puts "-----------"
-    puts "4 | 5 | 6"
-    puts "-----------"
-    puts "7 | 8 | 9"
-    puts "Use the board above as reference"
-    puts
     while !over? do
       self.turn
-      #sleep (0.5)
+      sleep (0.5)
       @board.display
     end
     puts "Congratulations #{winner}!" if won?
