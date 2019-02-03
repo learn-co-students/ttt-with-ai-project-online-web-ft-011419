@@ -18,7 +18,7 @@ class Players
 
     CORNERS = [0,2,6,8]
 
-    def block
+    def block_or_win
       row_to_block = WIN_COMBINATIONS.find do |combo|
         if @board.cells[combo[0]] != " "
           (@board.cells[combo[0]] == @board.cells[combo[1]] && @board.cells[combo[2]] == " ") || (@board.cells[combo[1]] == @board.cells[combo[2]] && @board.cells[combo[0]] == " ") || (@board.cells[combo[0]] == @board.cells[combo[2]] && @board.cells[combo[1]] == " ")
@@ -36,13 +36,18 @@ class Players
       CORNERS.find {|corner| @board.cells[corner] == " "}
     end
 
+    def center
+      @board.cells[4] = " "
+    end
 
     def move(board)
       @board = board
 
       case
-        when block != nil
-          output = block + 1
+        when block_or_win != nil
+          output = block_or_win + 1
+        when center
+          output = 5
         when corner != nil
           output = corner + 1
         else
