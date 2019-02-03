@@ -37,14 +37,14 @@ class Players
     end
 
     def center
-      @board.cells[4] = " "
+      @board.cells[4] == " "
     end
 
     def move(board)
       @board = board
 
       case
-        when block_or_win != nil
+      when block_or_win != nil
           output = block_or_win + 1
         when center
           output = 5
