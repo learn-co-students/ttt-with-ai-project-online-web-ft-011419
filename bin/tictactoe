@@ -61,9 +61,7 @@ def start
     puts "Invalid Input"
     start
   end
-
 end
-
 
 until input == "n"
   start

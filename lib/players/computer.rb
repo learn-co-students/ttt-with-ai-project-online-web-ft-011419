@@ -1,5 +1,3 @@
-require_relative '../player.rb'
-
 class Players
 
   class Computer < Player
@@ -43,20 +41,17 @@ class Players
     def move(board)
       @board = board
 
-      case
-      when block_or_win != nil
+        if block_or_win != nil
           output = block_or_win + 1
-        when center
+        elsif center
           output = 5
-        when corner != nil
+        elsif corner != nil
           output = corner + 1
         else
           output = rand(1..9)
-      end
+        end
 
         output.to_s
     end
-
   end
-
 end

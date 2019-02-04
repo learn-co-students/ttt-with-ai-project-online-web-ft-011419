@@ -39,7 +39,7 @@ class Board
     if (1..9).include?(input.to_i)
       taken?(input) ? false : true
     elsif input == "reset"
-      start 
+      start
     else
       false
       puts

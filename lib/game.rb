@@ -1,6 +1,3 @@
-require_relative './players/human'
-require_relative './players/computer'
-
 class Game
   attr_accessor :board, :player_1, :player_2
 
